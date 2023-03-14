@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Parser {
-    private static final String UNRECOGNISED_INPUT = "     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
+    private static final String UNRECOGNISED_INPUT = "     OOPS!!! I'm sorry, but I don't know what that means :-(";
     private ArrayList<Workout> workouts;
     /**
      * Read the input command of the users
