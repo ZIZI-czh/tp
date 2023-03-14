@@ -1,2 +1,6 @@
-package seedu.duke;public class inputChecking {
+package seedu.duke;
+
+public class inputChecking {
+
+
 }

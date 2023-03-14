@@ -1,12 +1,15 @@
-package seedu.duke;
+package seedu.duke.command;
+
+import seedu.duke.DukeException;
+import seedu.duke.Workout;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.seedu.duke.command;
+
 
 public class Parser {
     private static final String UNRECOGNISED_INPUT = "     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
-
+    private ArrayList<Workout> workouts;
     /**
      * Read the input command of the users
      * @return return the string of workout
@@ -17,8 +20,29 @@ public class Parser {
         workOut = in.nextLine();
         return workOut;
     }
+    public static void sayBye(){
+        System.out.println("See you next time!");
+    }
 
-    public static void inputValues(String input, ArrayList<Workout> workoutInput) throws DukeException {
+    /**
+     * check the input and see if the Bye is entered
+     * @return return false if bye is not entered
+     */
+    public static boolean isByeEntered(){
+        String checkInput = readCommand();
+        try {
+            if(checkInput.isEmpty()) {
+                throw new RuntimeException("You didn't enter anything, please type in the command to your workouts");
+            }
+            return checkInput.equalsIgnoreCase("bye");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            readCommand();
+        }
+        return false;
+    }
+
+    public static void inputInstruction(String input, ArrayList<Workout> workoutInput) throws DukeException {
         String[] command = input.split("\\s+");
         switch (command[0]) {
         case "list":

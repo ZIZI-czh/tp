@@ -1,2 +1,4 @@
-package seedu.duke;public class Workout {
+package seedu.duke;
+
+public class Workout {
 }
