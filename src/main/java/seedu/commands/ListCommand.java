@@ -4,8 +4,6 @@ package seedu.commands;
 import seedu.ui.Ui;
 import seedu.workout.Workout;
 
-import java.text.SimpleDateFormat;
-
 /**
  * This is the class for executing the list command
  */
@@ -26,11 +24,9 @@ public class ListCommand extends Command {
             if (!workoutList.workoutArrayList.isEmpty()) {
                 System.out.println("Here are the list of dates for your workout: ");
                 for (Workout workout : workoutList.workoutArrayList) {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
-                    String formattedDate = dateFormat.format(workout.getDate());
-                    System.out.println(formattedDate);
+                    System.out.println(workout.getDate());
                 }
-                Ui.showseperator();
+                Ui.showSeperator();
             } else {
                 //if there is no workout have been done
                 System.out.println("Haven't start your workout, please enter your workout");

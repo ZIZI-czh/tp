@@ -1,5 +1,6 @@
 package seedu.commands;
 
+import seedu.DateFormat;
 import seedu.ui.Ui;
 import seedu.workout.Workout;
 
@@ -27,10 +28,12 @@ public class DeleteCommand extends Command {
             return;
         }
         for (Workout workout : workoutList.workoutArrayList) {
-            if (workout.getDate().equals(workoutToDeleteDate)) {
+            DateFormat dateFormat = new DateFormat(workoutToDeleteDate);
+            String formattedDate = dateFormat.formatDate();
+            if (workout.getDate().equals(formattedDate)) {
                 workoutList.workoutArrayList.remove(workout);
                 System.out.println("Workout deleted successfully.");
-                Ui.showseperator();
+                Ui.showSeperator();
                 return;
             }
         }

@@ -1,6 +1,7 @@
 package seedu.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.DateFormat;
 import seedu.workout.Workout;
 import seedu.workout.WorkoutList;
 import java.text.SimpleDateFormat;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeleteCommandTest {
 
-    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 
     //@@ author guillaume-grn
@@ -18,8 +19,8 @@ public class DeleteCommandTest {
         WorkoutList workoutLists = new WorkoutList();
         Command command = new Command();
 
-        String stringDate1 = "01/11/22";
-        String stringDate2 = "02/11/22";
+        String stringDate1 = "01/11/2022";
+        String stringDate2 = "02/11/2022";
         Date date1 = dateFormat.parse(stringDate1);
         Date date2 = dateFormat.parse(stringDate2);
         Workout workout1 = new Workout(date1);
@@ -41,7 +42,9 @@ public class DeleteCommandTest {
 
         // Check that workout1 was removed and workout2 is still in the list
         assertEquals(1, workoutLists.workoutArrayList.size());
-        assertEquals(date2, workoutLists.workoutArrayList.get(0).getDate());
+        DateFormat dateFormat = new DateFormat(date2);
+        String formattedDate = dateFormat.formatDate();
+        assertEquals(formattedDate, workoutLists.workoutArrayList.get(0).getDate());
 
         // Try to remove workout1 again (should not be in the list)
         delete.execute();
