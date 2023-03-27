@@ -9,7 +9,9 @@ public class StartCommand extends Command {
 
     private Date date;
     public StartCommand(Date date) {
+        super();
         this.date = date;
+        setData(workoutList);
     }
 
     @Override

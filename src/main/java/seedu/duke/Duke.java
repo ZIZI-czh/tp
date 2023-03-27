@@ -32,8 +32,13 @@ public class Duke {
         do {
             String userInput = ui.getUserInput();
             command = new Parser().processCommand(userInput);
-            command.setData(workoutList);
-            command.execute();
+            try {
+                command.setData(workoutList);
+                command.execute();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                // handle the exception in the appropriate way for your application
+            }
         } while (!ExitCommand.isExit(command));
     }
 }

@@ -1,5 +1,8 @@
 package seedu.commands;
 
+import seedu.ui.Ui;
+import seedu.workout.Workout;
+
 import java.util.Date;
 
 public class ViewCommand extends Command {
@@ -11,6 +14,14 @@ public class ViewCommand extends Command {
 
 
     public void execute() {
-        workoutList.displayWorkout(workoutToViewDate);
+
+            for (Workout workout : workoutList.workoutArrayList) {
+                if (workout.getDate().equals(workoutToViewDate)) {
+                    System.out.println(workout.getExercises());
+                    Ui.showseperator();
+                    return;
+                }
+            }
+
     }
 }
