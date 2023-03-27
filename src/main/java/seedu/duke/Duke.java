@@ -3,6 +3,7 @@ package seedu.duke;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
 import seedu.parser.Parser;
+import seedu.storage.ReadFile;
 import seedu.ui.Ui;
 import seedu.workout.WorkoutList;
 
@@ -11,8 +12,16 @@ public class Duke {
 
     private Ui ui;
     private WorkoutList workoutList;
-    public static void main(String[] args) {
-        new Duke().run();
+
+    private static final String filePath = "data/exerciseRecording.txt";
+
+    public Duke(String filePath) {
+
+        try {
+            ReadFile.readFile(filePath);
+        } catch (java.io.FileNotFoundException e) {
+            Ui.showNotFoundError();
+        }
     }
 
     private void run() {
@@ -40,5 +49,9 @@ public class Duke {
                 // handle the exception in the appropriate way for your application
             }
         } while (!ExitCommand.isExit(command));
+    }
+
+    public static void main(String[] args) {
+        new Duke(filePath).run();
     }
 }

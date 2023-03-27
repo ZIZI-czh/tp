@@ -30,10 +30,13 @@ public class Ui {
     public static void showLine(){
         System.out.println(LINE);
     }
-    public static void  showseperator(){
+    public static void  showSeperator(){
         System.out.println(LINE_SEPERATOR);
     }
 
+    public static void showNotFoundError(){
+        System.out.println("Failed to locate the file");
+    }
     public String getUserInput() {
         return in.nextLine();
     }
