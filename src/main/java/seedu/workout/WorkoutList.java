@@ -1,10 +1,7 @@
 package seedu.workout;
 
-import seedu.ui.Ui;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+
 
 
 public class WorkoutList {

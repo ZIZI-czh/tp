@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class DeleteCommand extends Command {
     Date workoutToDeleteDate;
+
     public DeleteCommand(Date workoutToDeleteDate) {
         super();
         this.workoutToDeleteDate = workoutToDeleteDate;
@@ -21,20 +22,20 @@ public class DeleteCommand extends Command {
             System.out.println("WorkoutList is null.");
             return;
         }
-        if(workoutList.workoutArrayList == null){
+        if (workoutList.workoutArrayList == null) {
             System.out.println("the workout array list is empty");
             return;
         }
-            for (Workout workout : workoutList.workoutArrayList) {
-                if (workout.getDate().equals(workoutToDeleteDate)) {
-                    workoutList.workoutArrayList.remove(workout);
-                    System.out.println("Workout deleted successfully.");
-                    Ui.showseperator();
-                    return;
-                }
+        for (Workout workout : workoutList.workoutArrayList) {
+            if (workout.getDate().equals(workoutToDeleteDate)) {
+                workoutList.workoutArrayList.remove(workout);
+                System.out.println("Workout deleted successfully.");
+                Ui.showseperator();
+                return;
             }
-            System.out.println("No workout found with the specified date.");
         }
+        System.out.println("No workout found with the specified date.");
+    }
 
 }
 

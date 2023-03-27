@@ -16,32 +16,29 @@ public class ListCommand extends Command {
 
     }
 
-
-
     /**
      * Show the list of date of the workout by calling the method in workoutList
-     *
      */
     //@@ author ZIZI-czh
     @Override
     public void execute() {
-            try {
-                if (!workoutList.workoutArrayList.isEmpty()) {
-                    System.out.println("Here are the list of dates for your workout: ");
-                    for (Workout workout : workoutList.workoutArrayList) {
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
-                        String formattedDate = dateFormat.format(workout.getDate());
-                        System.out.println(formattedDate);
-                    }
-                    Ui.showseperator();
-                } else {
-                    //if there is no workout have been done
-                    System.out.println("Haven't start your workout, please enter your workout");
+        try {
+            if (!workoutList.workoutArrayList.isEmpty()) {
+                System.out.println("Here are the list of dates for your workout: ");
+                for (Workout workout : workoutList.workoutArrayList) {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+                    String formattedDate = dateFormat.format(workout.getDate());
+                    System.out.println(formattedDate);
                 }
-
-            } catch (NullPointerException e) {
+                Ui.showseperator();
+            } else {
+                //if there is no workout have been done
                 System.out.println("Haven't start your workout, please enter your workout");
             }
+
+        } catch (NullPointerException e) {
+            System.out.println("Haven't start your workout, please enter your workout");
+        }
 
     }
 }
