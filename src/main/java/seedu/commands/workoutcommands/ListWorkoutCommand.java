@@ -1,18 +1,20 @@
-package seedu.commands;
+package seedu.commands.workoutcommands;
 
 
+import seedu.commands.Command;
 import seedu.ui.Ui;
-import seedu.workout.Workout;
+import seedu.workouttracker.workout.Workout;
+
 
 /**
  * This is the class for executing the list command
  */
-public class ListCommand extends Command {
+public class ListWorkoutCommand extends Command {
 
     //@@ author ZIZI-czh
-    public ListCommand() {
-
+    public ListWorkoutCommand() {
     }
+
 
     /**
      * Show the list of date of the workout by calling the method in workoutList
@@ -26,7 +28,7 @@ public class ListCommand extends Command {
                 for (Workout workout : workoutList.workoutArrayList) {
                     System.out.println(workout.getDate());
                 }
-                Ui.showSeperator();
+                Ui.showSeparator();
             } else {
                 //if there is no workout have been done
                 System.out.println("Haven't start your workout, please enter your workout");
@@ -37,5 +39,6 @@ public class ListCommand extends Command {
         }
 
     }
+
 }
 

@@ -1,36 +1,24 @@
 package seedu.duke;
 
+import seedu.calorietracker.CalorieTracker;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
 import seedu.parser.Parser;
-import seedu.storage.ReadFile;
 import seedu.ui.Ui;
-import seedu.workout.WorkoutList;
+import seedu.workouttracker.workout.WorkoutList;
 
 
 public class Duke {
-
-    private Ui ui;
     private WorkoutList workoutList;
-
-    private static final String filePath = "data/exerciseRecording.txt";
-
-    public Duke(String filePath) {
-
-        try {
-            ReadFile.readFile(filePath);
-        } catch (java.io.FileNotFoundException e) {
-            Ui.showNotFoundError();
-        }
+    private CalorieTracker calorieTracker;
+    public static void main(String[] args) {
+        new Duke().run();
     }
 
     private void run() {
-        ui = new Ui();
         workoutList = new WorkoutList();
-        Ui.showLine();
-        Ui.showLogo();
-        Ui.showLine();
-        Ui.showGreeting();
+        calorieTracker = new CalorieTracker();
+        Ui.showWelcomeMessage();
 
         executeCommandUntilExit();
         Ui.showExit();
@@ -39,8 +27,12 @@ public class Duke {
     private void executeCommandUntilExit() {
         Command command;
         do {
-            String userInput = ui.getUserInput();
+            String userInput = Ui.getUserInput();
             command = new Parser().processCommand(userInput);
+
+            command.setData(workoutList, calorieTracker);
+            command.execute();
+
             try {
                 command.setData(workoutList);
                 command.execute();
@@ -50,8 +42,5 @@ public class Duke {
             }
         } while (!ExitCommand.isExit(command));
     }
-
-    public static void main(String[] args) {
-        new Duke(filePath).run();
-    }
 }
+

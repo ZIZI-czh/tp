@@ -1,14 +1,17 @@
-package seedu.commands;
+package seedu.commands.workoutcommands;
 
-import seedu.workout.Workout;
-import seedu.workout.WorkoutList;
+import seedu.commands.Command;
+import seedu.workouttracker.workout.Workout;
+import seedu.workouttracker.workout.WorkoutList;
 
 import java.util.Date;
 
-public class StartCommand extends Command {
+public class StartWorkoutCommand extends Command {
 
     private Date date;
-    public StartCommand(Date date) {
+
+
+    public StartWorkoutCommand(Date date) {
         super();
         this.date = date;
         setData(workoutList);

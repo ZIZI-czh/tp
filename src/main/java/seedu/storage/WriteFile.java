@@ -1,6 +1,5 @@
 package seedu.storage;
 
-import seedu.workout.Workout;
 import seedu.workout.WorkoutList;
 
 import java.io.File;
@@ -11,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class WriteFile {
 
-    public static WorkoutList workoutList = new WorkoutList();
+   /* public static WorkoutList workoutList = new WorkoutList();
     public static void writeWorkoutToFile(String filePath) throws IOException {
 
         try {
@@ -32,5 +31,5 @@ public class WriteFile {
 
 
 
-    }
+    }*/
 }

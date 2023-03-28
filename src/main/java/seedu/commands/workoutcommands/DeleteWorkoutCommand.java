@@ -1,16 +1,18 @@
-package seedu.commands;
+package seedu.commands.workoutcommands;
 
 import seedu.DateFormat;
+import seedu.commands.Command;
 import seedu.ui.Ui;
-import seedu.workout.Workout;
+import seedu.workouttracker.workout.Workout;
 
 import java.util.Date;
 
 
-public class DeleteCommand extends Command {
+public class DeleteWorkoutCommand extends Command {
     Date workoutToDeleteDate;
 
-    public DeleteCommand(Date workoutToDeleteDate) {
+
+    public DeleteWorkoutCommand(Date workoutToDeleteDate) {
         super();
         this.workoutToDeleteDate = workoutToDeleteDate;
         setData(workoutList);
@@ -33,12 +35,13 @@ public class DeleteCommand extends Command {
             if (workout.getDate().equals(formattedDate)) {
                 workoutList.workoutArrayList.remove(workout);
                 System.out.println("Workout deleted successfully.");
-                Ui.showSeperator();
+                Ui.showSeparator();
                 return;
             }
         }
         System.out.println("No workout found with the specified date.");
     }
-
 }
+
+
 

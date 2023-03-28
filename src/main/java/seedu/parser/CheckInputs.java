@@ -1,25 +1,21 @@
 package seedu.parser;
 
 
-import seedu.commands.AddCommand;
-import seedu.commands.ListCommand;
-import seedu.commands.ViewCommand;
-import seedu.commands.DeleteCommand;
+import seedu.commands.workoutcommands.AddWorkoutCommand;
+import seedu.commands.workoutcommands.DeleteWorkoutCommand;
+import seedu.commands.workoutcommands.ListWorkoutCommand;
+import seedu.commands.workoutcommands.StartWorkoutCommand;
+import seedu.commands.workoutcommands.ViewWorkoutCommand;
 import seedu.commands.Command;
-
-
 import seedu.commands.IncorrectCommand;
-import seedu.commands.StartCommand;
-import seedu.workout.Exercise;
-
+import seedu.workouttracker.workout.Exercise;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-
-public class CheckInput {
+public class CheckInputs {
 
     private static final int EXERCISE_NAME_INDEX = 0;
     private static final int WEIGHT_INDEX = 1;
@@ -39,7 +35,7 @@ public class CheckInput {
         } catch (ArrayIndexOutOfBoundsException e) {
             return new IncorrectCommand();
         }
-        return new AddCommand(toAdd);
+        return new AddWorkoutCommand(toAdd);
     }
 
     /**
@@ -52,7 +48,7 @@ public class CheckInput {
      */
     static Command processStart(String arguments) {
         Date date = parseDate(arguments);
-        return date != null && parseInput(arguments) ? new StartCommand(date) : new IncorrectCommand();
+        return date != null && parseInput(arguments) ? new StartWorkoutCommand(date) : new IncorrectCommand();
     }
 
     /**
@@ -63,19 +59,19 @@ public class CheckInput {
      */
     static Command processDelete(String arguments) {
         Date date = parseDate(arguments);
-        return date != null && parseInput(arguments) ? new DeleteCommand(date) : new IncorrectCommand();
+        return date != null && parseInput(arguments) ? new DeleteWorkoutCommand(date) : new IncorrectCommand();
     }
 
     //@@ author ZIZI-czh
     static Command processList(String arguments) {
-        return arguments == null || arguments.trim().isEmpty() ? new ListCommand() : new IncorrectCommand();
+        return arguments == null || arguments.trim().isEmpty() ? new ListWorkoutCommand() : new IncorrectCommand();
     }
 
 
     static Command processView(String arguments) {
         Date date = parseDate(arguments);
 
-        return date != null && parseInput(arguments) ? new ViewCommand(date) : new IncorrectCommand();
+        return date != null && parseInput(arguments) ? new ViewWorkoutCommand(date) : new IncorrectCommand();
     }
 
 
@@ -145,7 +141,6 @@ public class CheckInput {
         }
         return true; // input is in the correct format
     }
-
 
 
 }

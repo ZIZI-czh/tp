@@ -1,9 +1,6 @@
-package seedu.workout;
-
-import seedu.workouttracker.workout.Workout;
+package seedu.workouttracker.workout;
 
 import java.util.ArrayList;
-
 
 
 public class WorkoutList {
@@ -33,4 +30,7 @@ public class WorkoutList {
         return workoutArrayList.get(currentWorkoutIndex);
     }
 }
+
+
+
 

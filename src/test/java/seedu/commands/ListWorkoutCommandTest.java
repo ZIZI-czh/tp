@@ -1,8 +1,9 @@
 package seedu.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.workout.Workout;
-import seedu.workout.WorkoutList;
+import seedu.commands.workoutcommands.ListWorkoutCommand;
+import seedu.workouttracker.workout.Workout;
+import seedu.workouttracker.workout.WorkoutList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -11,7 +12,9 @@ import java.text.SimpleDateFormat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ListCommandTest {
+
+public class ListWorkoutCommandTest {
+
     //@@ author ZIZI-czh
     @Test
     public void testShowWorkoutList() throws ParseException {
@@ -30,7 +33,7 @@ public class ListCommandTest {
         workoutList.addWorkout(new Workout(format.parse("11/10/2023")));
         Command command = new Command();
         command.setData(workoutList);
-        ListCommand testList = new ListCommand();
+        ListWorkoutCommand testList = new ListWorkoutCommand();
         assertEquals(2, workoutList.workoutArrayList.size());
 
         testList.setData(workoutList);

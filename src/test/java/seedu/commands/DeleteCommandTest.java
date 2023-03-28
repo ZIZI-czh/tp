@@ -2,8 +2,9 @@ package seedu.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.DateFormat;
-import seedu.workout.Workout;
-import seedu.workout.WorkoutList;
+import seedu.commands.workoutcommands.DeleteWorkoutCommand;
+import seedu.workouttracker.workout.Workout;
+import seedu.workouttracker.workout.WorkoutList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +36,7 @@ public class DeleteCommandTest {
         //DeleteCommand delete = new DeleteCommand(date1);
 
 
-        DeleteCommand delete = new DeleteCommand(date1);
+        DeleteWorkoutCommand delete = new DeleteWorkoutCommand(date1);
         delete.setData(workoutLists);
         // Remove workout1 from the list
         delete.execute();
@@ -53,3 +54,4 @@ public class DeleteCommandTest {
         assertEquals(1, workoutLists.workoutArrayList.size());
     }
 }
+

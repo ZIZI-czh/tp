@@ -2,13 +2,13 @@ package seedu.parser;
 
 
 import seedu.commands.Command;
-import seedu.commands.EndCommand;
+import seedu.commands.workoutcommands.EndWorkoutCommand;
 import seedu.commands.ExitCommand;
-import seedu.commands.HelpCommand;
+import seedu.commands.workoutcommands.HelpWorkoutCommand;
 import seedu.commands.IncorrectCommand;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class Parser {
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandName>\\S+)(?<arguments>" +
@@ -25,25 +25,25 @@ public class Parser {
 
         switch (commandName) {
         case "/start":
-            return CheckInput.processStart(arguments);
+            return CheckInputs.processStart(arguments);
         case "/add":
-            return CheckInput.processAdd(arguments);
+            return CheckInputs.processAdd(arguments);
         case "/delete":
-            return CheckInput.processDelete(arguments);
+            return CheckInputs.processDelete(arguments);
         case "/list":
-            return CheckInput.processList(arguments);
+            return CheckInputs.processList(arguments);
         case "/view":
-            return CheckInput.processView(arguments);
+            return CheckInputs.processView(arguments);
         case "/end":
-            return new EndCommand();
+            return new EndWorkoutCommand();
         case "/exit":
             return new ExitCommand();
         case "/help":
-            return new HelpCommand();
+            return new HelpWorkoutCommand();
+        case "/cadd":
+            return CheckCaloriesInput.processAddCalories(arguments);
         default:
             return new IncorrectCommand();
         }
     }
-
 }
-
