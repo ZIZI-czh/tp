@@ -74,4 +74,8 @@ public class Ui {
         }
         Ui.showSeparator();
     }
+
+    public static void showNotFoundError() {
+        System.out.println("File does not exist");
+    }
 }

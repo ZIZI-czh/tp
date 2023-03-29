@@ -4,6 +4,8 @@ package seedu.commands;
 import seedu.calorietracker.CalorieTracker;
 import seedu.workout.WorkoutList;
 
+import java.io.IOException;
+
 public class Command {
 
     protected WorkoutList workoutList = new WorkoutList();

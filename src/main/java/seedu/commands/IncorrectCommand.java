@@ -7,8 +7,8 @@ public class IncorrectCommand extends Command {
     }
 
     @Override
-    public void execute() {
-        System.out.println("Please enter the command again!");
+    public String execute() {
+        return ("Please enter the command again!");
     }
 
 }

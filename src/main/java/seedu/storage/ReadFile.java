@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class ReadFile {
 
-    public static void readFile(String filePath) throws FileNotFoundException {
+   public static void readFile(String filePath) throws FileNotFoundException {
 
-      /*  File savedFile = new File(filePath);
+        File savedFile = new File(filePath);
         if (!savedFile.getParentFile().exists()) {
             savedFile.getParentFile().mkdirs();
 
@@ -25,11 +25,6 @@ public class ReadFile {
             System.out.println("Failed to create a new file!!!");
         }
         Scanner fileRead = new Scanner(new FileInputStream((filePath)));
-        try {
-            while (fileRead.hasNext()) {
-                String command = fileRead.nextLine();
-            }
-        }catch ()
-    }*/
+
     }
 }

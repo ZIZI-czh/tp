@@ -11,7 +11,7 @@ public class Workout {
     private static final int EMPTY = 0;
     private static final String EMPTY_EXERCISE_LIST_MESSAGE = "No exercise in workout.";
     private static final String EXERCISE_LIST_HEADER =
-            "Here are the list of exercises in your workout:";
+            "Here are the list of exercises in your workout:" + System.lineSeparator();
     private Date date;
     private ArrayList<Exercise> workoutExercises;
 
@@ -20,6 +20,9 @@ public class Workout {
         workoutExercises = new ArrayList<>();
     }
 
+    public Workout(){
+
+    }
     public void addExercise(Exercise exercise) {
         workoutExercises.add(exercise);
     }
