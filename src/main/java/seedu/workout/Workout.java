@@ -13,7 +13,7 @@ public class Workout {
     private static final String EXERCISE_LIST_HEADER =
             "Here are the list of exercises in your workout:" + System.lineSeparator();
     private Date date;
-    private ArrayList<Exercise> workoutExercises;
+    private static ArrayList<Exercise> workoutExercises;
 
     public Workout(Date date) {
         this.date = date;
@@ -35,7 +35,7 @@ public class Workout {
     public void setDate(Date date) {
         this.date = date;
     }
-    public ArrayList<Exercise> getExercises() {
+    public static ArrayList<Exercise> getExercises() {
         return workoutExercises;
     }
 
@@ -51,7 +51,7 @@ public class Workout {
             exerciseListString.append(i + 1).append(". " + workoutExercises.get(i).toString() + System.lineSeparator());
         }
 
-        System.out.println(exerciseListString);
+        System.out.print(exerciseListString);
         return Ui.LINE_SEPARATOR;
     }
 }

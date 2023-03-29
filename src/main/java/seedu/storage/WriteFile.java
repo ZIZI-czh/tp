@@ -1,24 +1,24 @@
 package seedu.storage;
 
-import seedu.calorietracker.CalorieTracker;
+import seedu.commands.Command;
 import seedu.parser.DateFormatter;
-import seedu.workout.Workout;
 import seedu.workout.WorkoutList;
 
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 
 
 public class WriteFile extends Storage{
-
     private static final String SPACE = "          ";
-
+    public WriteFile(){
+        super();
+    }
 
     public static void writeWorkoutToFile(String filePath){
+        WorkoutList workoutList = Command.getWorkoutList();
         workoutArrayList = workoutList.getWorkoutArrayList();
 
         try {

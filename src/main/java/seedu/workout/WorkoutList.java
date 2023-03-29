@@ -4,6 +4,7 @@ package seedu.workout;
 import seedu.parser.DateFormatter;
 import seedu.ui.Ui;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -117,4 +118,3 @@ public class WorkoutList {
         return workoutsInSpecificWeek;
     }
 }
-

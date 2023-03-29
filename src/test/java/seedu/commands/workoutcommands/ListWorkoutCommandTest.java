@@ -3,6 +3,7 @@ package seedu.commands.workoutcommands;
 
 import org.junit.jupiter.api.Test;
 import seedu.calorietracker.CalorieTracker;
+import seedu.commands.Command;
 import seedu.workout.Workout;
 import seedu.workout.WorkoutList;
 
@@ -25,13 +26,11 @@ public class ListWorkoutCommandTest {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
         // Call the method to be tested
-        // WorkoutList addList = new WorkoutList();
-        WorkoutList workoutList = new WorkoutList();
-        CalorieTracker calorieTracker = new CalorieTracker();
+        WorkoutList workoutList = Command.getWorkoutList();
         workoutList.addWorkout(new Workout(format.parse("11/11/23")));
         workoutList.addWorkout(new Workout(format.parse("11/10/23")));
         ListWorkoutCommand testList = new ListWorkoutCommand();
-        testList.setData(workoutList, calorieTracker);
+        //testList.setData(workoutList, calorieTracker);
         assertEquals(2, workoutList.getWorkoutArrayList().size());
 
         //Capture the console output

@@ -4,7 +4,6 @@ package seedu.commands.workoutcommands;
 import seedu.commands.Command;
 import seedu.parser.DateFormatter;
 import seedu.workout.Workout;
-
 import java.util.Date;
 
 public class ViewWorkoutCommand extends Command {

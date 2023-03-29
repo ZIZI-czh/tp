@@ -8,12 +8,9 @@ import seedu.workout.WorkoutList;
 
 import java.util.ArrayList;
 
-public class Storage extends Command{
+public class Storage{
 
-    //protected static WorkoutList workoutList = new WorkoutList();
-    //protected static Workout workout;
     protected static ArrayList<Workout> workoutArrayList;
     protected static ArrayList<Exercise> workoutExercises;
 
-    //protected static WorkoutList workoutList;
 }

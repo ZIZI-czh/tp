@@ -124,19 +124,19 @@ public class CheckInputs {
     private static boolean parseInput(String arguments) {
         //arguments.trim().contains("\\s+");
         if (arguments.trim().contains("\\s+")) {
-            System.out.println("invalid input date, please use the format /start dd/MM/yyyy");
+            System.out.println("invalid input date, please use the format /start dd/MM/yy");
             return false; // not in the form "/start dd/MM/yy"
         }
         String[] dateParts = arguments.trim().split("/");
 
         if (dateParts.length != 3) {
-            System.out.println("invalid input, please use the format dd/MM/yyyy");
+            System.out.println("invalid input, please use the format dd/MM/yy");
             return false; // not in the form "dd/MM/yy"
         }
 
         for (String part : dateParts) {
             if (part.contains("/")) {
-                System.out.println("invalid input, please follow /start dd/MM/yyyy");
+                System.out.println("invalid input, please follow /start dd/MM/yy");
                 return false; // non-numeric character found in date
             }
         }

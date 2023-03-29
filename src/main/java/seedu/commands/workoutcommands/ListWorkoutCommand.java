@@ -4,10 +4,6 @@ package seedu.commands.workoutcommands;
 import seedu.commands.Command;
 import seedu.parser.DateFormatter;
 import seedu.ui.Ui;
-import seedu.workout.Workout;
-
-import java.util.ArrayList;
-
 /**
  * This is the class for executing the list command
  */
