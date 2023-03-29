@@ -12,6 +12,7 @@ public class WorkoutList {
     public static final int NO_CURRENT_WORKOUT = -1;
     private ArrayList<Workout> workoutArrayList;
     private int currentWorkoutIndex;
+    private int currentStorageWorkoutIndex;
 
     public WorkoutList() {
         workoutArrayList = new ArrayList<>();
@@ -22,10 +23,22 @@ public class WorkoutList {
         workoutArrayList.add(workout);
         currentWorkoutIndex = getLastIndex();
     }
+    public void addStorageWorkout(Workout workout) {
+        workoutArrayList.add(workout);
+
+    }
 
     public void setCurrentWorkoutIndex(int currentWorkoutIndex) {
         this.currentWorkoutIndex = currentWorkoutIndex;
     }
+
+    public void setCurrentStorageWorkoutIndex(int currentWorkoutIndex) {
+        this.currentStorageWorkoutIndex = currentWorkoutIndex;
+    }
+    public Workout getStorageCurrentWorkout() {
+        return workoutArrayList.get(currentStorageWorkoutIndex);
+    }
+
 
     public int getCurrentWorkoutIndex() {
         return currentWorkoutIndex;
@@ -50,25 +63,8 @@ public class WorkoutList {
                 return "Workout deleted";
             }
         }
-
         return "Workout not in list";
     }
-
-    /*@Override
-    public String toString() {
-        if (workoutArrayList.size() == EMPTY) {
-            return EMPTY_WORKOUT_LIST_MESSAGE;
-        }
-
-        StringBuilder workoutListString = new StringBuilder();
-        workoutListString.append(WORKOUT_LIST_HEADER);
-        for (int i = 0; i < workoutArrayList.size(); i += 1) {
-            workoutListString.append(i + 1).append(". "
-                    + DateFormatter.dateToString(workoutArrayList.get(i).getDate()) + System.lineSeparator());
-        }
-
-        return workoutListString.toString();
-    }*/
 
     //@@ author guillaume-grn
     public ArrayList<Exercise> countSetsRepsPreparation(Date dayInSpecificWeekDate) {

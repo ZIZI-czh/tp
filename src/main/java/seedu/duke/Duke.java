@@ -14,16 +14,12 @@ import seedu.workout.WorkoutList;
 import java.io.FileNotFoundException;
 
 public class Duke {
-    private WorkoutList workoutList;
+    private static  WorkoutList workoutList;
     private CalorieTracker calorieTracker;
-    public static String filePath = "data/Recordings.txt";
+    public static String filePath = "data/workoutRecording.txt";
 
     public Duke(String filePath) {
-        try {
-            ReadFile.readFile(filePath);
-        } catch (java.io.FileNotFoundException e) {
-            Ui.showNotFoundError();
-        }
+        ReadFile.readFile(filePath);
     }
     public static void main(String[] args) {
         new Duke(filePath).run();
@@ -34,8 +30,11 @@ public class Duke {
         workoutList = new WorkoutList();
         calorieTracker = new CalorieTracker();
         Ui.showWelcomeMessage();
-
         executeCommandUntilExit();
+    }
+
+    public static WorkoutList getWorkoutList() {
+        return workoutList;
     }
 
     private void executeCommandUntilExit() {

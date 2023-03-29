@@ -20,9 +20,6 @@ public class Workout {
         workoutExercises = new ArrayList<>();
     }
 
-    public Workout(){
-
-    }
     public void addExercise(Exercise exercise) {
         workoutExercises.add(exercise);
     }
@@ -54,7 +51,7 @@ public class Workout {
             exerciseListString.append(i + 1).append(". " + workoutExercises.get(i).toString() + System.lineSeparator());
         }
 
-        System.out.println(exerciseListString.toString());
+        System.out.println(exerciseListString);
         return Ui.LINE_SEPARATOR;
     }
 }

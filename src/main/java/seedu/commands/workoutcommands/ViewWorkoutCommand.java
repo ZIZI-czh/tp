@@ -23,7 +23,6 @@ public class ViewWorkoutCommand extends Command {
                 return workout.toString();
             }
         }
-
         return WORKOUT_NOT_FOUND_MESSAGE + DateFormatter.dateToString(workoutToViewDate);
     }
 }
