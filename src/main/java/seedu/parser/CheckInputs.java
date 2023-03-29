@@ -1,22 +1,20 @@
 package seedu.parser;
 
 
+import seedu.commands.Command;
+import seedu.commands.IncorrectSyntaxCommand;
+import seedu.commands.countcommands.CountSetsRepsCommand;
 import seedu.commands.workoutcommands.AddWorkoutCommand;
 import seedu.commands.workoutcommands.DeleteWorkoutCommand;
 import seedu.commands.workoutcommands.ListWorkoutCommand;
 import seedu.commands.workoutcommands.StartWorkoutCommand;
 import seedu.commands.workoutcommands.ViewWorkoutCommand;
-import seedu.commands.Command;
-import seedu.commands.IncorrectCommand;
-import seedu.workouttracker.workout.Exercise;
-import java.text.DateFormat;
+import seedu.workout.Exercise;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class CheckInputs {
-
     private static final int EXERCISE_NAME_INDEX = 0;
     private static final int WEIGHT_INDEX = 1;
     private static final int REPS_PER_SET_INDEX = 2;
@@ -33,7 +31,7 @@ public class CheckInputs {
             toAdd = new Exercise(exerciseName, weight, repsPerSet);
 
         } catch (ArrayIndexOutOfBoundsException e) {
-            return new IncorrectCommand();
+            return new IncorrectSyntaxCommand("/add command");
         }
         return new AddWorkoutCommand(toAdd);
     }
@@ -48,7 +46,8 @@ public class CheckInputs {
      */
     static Command processStart(String arguments) {
         Date date = parseDate(arguments);
-        return date != null && parseInput(arguments) ? new StartWorkoutCommand(date) : new IncorrectCommand();
+        return date != null && parseInput(arguments) ? new StartWorkoutCommand(date) :
+                new IncorrectSyntaxCommand("/start command");
     }
 
     /**
@@ -59,19 +58,37 @@ public class CheckInputs {
      */
     static Command processDelete(String arguments) {
         Date date = parseDate(arguments);
-        return date != null && parseInput(arguments) ? new DeleteWorkoutCommand(date) : new IncorrectCommand();
+        return date != null && parseInput(arguments) ? new DeleteWorkoutCommand(date) :
+                new IncorrectSyntaxCommand("/delete command");
     }
 
     //@@ author ZIZI-czh
     static Command processList(String arguments) {
-        return arguments == null || arguments.trim().isEmpty() ? new ListWorkoutCommand() : new IncorrectCommand();
+        return arguments == null || arguments.trim().isEmpty() ? new ListWorkoutCommand() :
+                new IncorrectSyntaxCommand("/list command");
     }
 
 
     static Command processView(String arguments) {
-        Date date = parseDate(arguments);
+        Date date;
+        try {
+            date = DateFormatter.stringToDate(arguments);
+            return new ViewWorkoutCommand(date);
+        } catch (ParseException e) {
+            return new IncorrectSyntaxCommand("/view command");
+        }
+    }
 
-        return date != null && parseInput(arguments) ? new ViewWorkoutCommand(date) : new IncorrectCommand();
+    //@@ author guillaume-grn
+    static Command processSetsRepsCount(String arguments) {
+        Date date;
+
+        try {
+            date = DateFormatter.stringToDate(arguments);
+        } catch (ParseException e) {
+            return new IncorrectSyntaxCommand("date");
+        }
+        return new CountSetsRepsCommand(date);
     }
 
 
@@ -83,9 +100,9 @@ public class CheckInputs {
     //@@ author ZIZI-czh
     private static Date parseDate(String arguments) {
         try {
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date enteredDate = dateFormat.parse(arguments);
+            Date enteredDate = DateFormatter.stringToDate(arguments);
             Date currentDate = new Date();
+
             if (enteredDate.compareTo(currentDate) > 0) {
                 System.out.println("Date cannot be after the current date.");
                 return null;
@@ -98,7 +115,7 @@ public class CheckInputs {
     }
 
     /**
-     * This methods used to check the input command based on the format and the date
+     * This method is used to check the input command based on the format and the date
      * @param arguments input
      * @return return false if the input does not follow the format
      */
