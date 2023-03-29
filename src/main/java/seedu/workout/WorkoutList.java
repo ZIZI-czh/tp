@@ -10,11 +10,6 @@ import java.util.Date;
 
 public class WorkoutList {
     public static final int NO_CURRENT_WORKOUT = -1;
-    public static final int EMPTY = 0;
-    private static final String EMPTY_WORKOUT_LIST_MESSAGE = "No workout recorded.";
-    private static final String WORKOUT_LIST_HEADER =
-            "Here are the list of dates of your workouts:" + System.lineSeparator();
-
     private ArrayList<Workout> workoutArrayList;
     private int currentWorkoutIndex;
 
@@ -59,7 +54,7 @@ public class WorkoutList {
         return "Workout not in list";
     }
 
-    @Override
+    /*@Override
     public String toString() {
         if (workoutArrayList.size() == EMPTY) {
             return EMPTY_WORKOUT_LIST_MESSAGE;
@@ -73,7 +68,7 @@ public class WorkoutList {
         }
 
         return workoutListString.toString();
-    }
+    }*/
 
     //@@ author guillaume-grn
     public ArrayList<Exercise> countSetsRepsPreparation(Date dayInSpecificWeekDate) {

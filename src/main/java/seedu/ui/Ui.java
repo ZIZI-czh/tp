@@ -17,7 +17,7 @@ public class Ui {
             "|  |     |  |     |  |      /  /----.\n" +
             "|__|     |__|     |__|     /________|";
     private static final String LINE = "=======================================";
-    private static final String LINE_SEPARATOR = "----------------------------------";
+    public static final String LINE_SEPARATOR = "----------------------------------";
     private static final Scanner in = new Scanner(System.in);
     private static final String HELP_MESSAGE =
             "Here are the list of commands that you can use:" + System.lineSeparator() + LINE

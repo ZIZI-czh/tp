@@ -6,6 +6,8 @@ import seedu.calorietracker.CalorieTracker;
 import seedu.workout.Workout;
 import seedu.workout.WorkoutList;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -32,11 +34,18 @@ public class ListWorkoutCommandTest {
         testList.setData(workoutList, calorieTracker);
         assertEquals(2, workoutList.getWorkoutArrayList().size());
 
+        //Capture the console output
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        // Call the method to be tested
+        testList.execute();
+
         // Assert that the console output matches the expected output
         assertEquals("Here are the list of dates of your workouts:" + System.lineSeparator()
                         + "1. 11/11/23" + System.lineSeparator()
                         + "2. 11/10/23" + System.lineSeparator(),
-                testList.execute());
+                outContent.toString());
     }
 }
 

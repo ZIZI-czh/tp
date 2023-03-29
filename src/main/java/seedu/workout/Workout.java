@@ -2,6 +2,7 @@ package seedu.workout;
 
 
 import seedu.parser.DateFormatter;
+import seedu.ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +11,7 @@ public class Workout {
     private static final int EMPTY = 0;
     private static final String EMPTY_EXERCISE_LIST_MESSAGE = "No exercise in workout.";
     private static final String EXERCISE_LIST_HEADER =
-            "Here are the list of exercises in your workout:" + System.lineSeparator();
+            "Here are the list of exercises in your workout:";
     private Date date;
     private ArrayList<Exercise> workoutExercises;
 
@@ -50,7 +51,8 @@ public class Workout {
             exerciseListString.append(i + 1).append(". " + workoutExercises.get(i).toString() + System.lineSeparator());
         }
 
-        return exerciseListString.toString();
+        System.out.println(exerciseListString.toString());
+        return Ui.LINE_SEPARATOR;
     }
 }
 
