@@ -133,7 +133,7 @@ public class WorkoutList {
         Date startOfWeekDate = calendar.getTime();
         calendar.add(Calendar.DAY_OF_WEEK, 6);
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        Date startOfWeekDate = calendar.getTime();
+        //Date startOfWeekDate1 = calendar.getTime();
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         Date endOfWeekDate = calendar.getTime();
         for (Date workoutDate : workouts.keySet()) {
