@@ -64,7 +64,7 @@ public class Duke {
             System.out.println(command.execute());
         } while (!ExitCommand.isExit(command));
         WorkoutWriteFile.writeWorkoutToFile(Duke.FILE_PATH_WORKOUT, workoutList);
-        // FoodCaloriesWriteFile.writeFoodCaloriesToFile(FOOD_CALORIE, foodList);
+        // FoodCaloriesWriteFile.writeFoodCaloriesToFile(FOOD_CALORIE, foodList);  //change
         //DailyCaloriesWriteFile.writeDailyCaloriesToFile(TOTAL_CALORIE, rcalorieTracke);
     }
 }

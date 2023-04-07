@@ -1,0 +1,58 @@
+@startuml
+hide footbox
+
+Actor User
+activate ":Duke"
+":Duke" -> ":Ui" : showWelcomeMessage()
+activate ":Ui"
+":Ui" --> ":Duke"
+deactivate ":Ui"
+":Duke" -> ":WorkoutStorage" : writeWorkoutToFile()
+activate ":WorkoutStorage"
+return
+deactivate ":WorkoutStorage"
+":Duke" -> ":DailyCaloriesStorage" : writeDailyCaloriesToFile()
+activate ":DailyCaloriesStorage"
+return
+deactivate ":DailyCaloriesStorage"
+
+
+loop until isExit()
+    ":Duke" -> ":Duke": Parser()
+    activate ":Duke"
+    ":Duke" -> ":Ui": getUserInput()
+    activate ":Ui"
+    User -> ":Ui":input
+    return
+    ":Duke" -> ":Parser" : processCommand()
+    activate ":Parser"
+    ":Parser" -> ":Parser" : matcher()
+    activate ":Parser"
+    ":Parser" --> ":Parser"
+    deactivate ":Parser"
+
+    alt command is valid
+        ":Parser" -> ":Command"**: new
+        activate ":Command"
+        return command
+        return command
+        ":Duke" -> ":Command" : execute command
+        activate ":Command"
+        ":Command" -> ":Duke": print response
+
+        deactivate ":Command"
+        destroy ":Command"
+
+        deactivate ":Duke"
+
+    else command is invalid
+        ":Duke" -> ":IncorrectSyntaxCommand" : new
+        activate ":IncorrectSyntaxCommand"
+        return Command
+        destroy ":IncorrectSyntaxCommand"
+
+    end
+end
+deactivate ":Duke"
+
+@enduml
