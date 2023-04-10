@@ -44,12 +44,16 @@ public class Parser {
     private static final Pattern BASIC_COMMAND_FORMAT =
             Pattern.compile("(?<commandName>\\S+)(?<arguments>.*)");
 
+
     public static Command processCommand(String userInput) throws InvalidSyntaxException,
             InvalidArgumentException, CommandNotFoundException, MultiSlashErrorException, InvalidDateFormatException,
             InvalidDayAndMonthException, InvalidYearException, MissingArgumentException, InvalidExerciseNameException,
             InvalidWeightException, InvalidNumberForRepsException, EmptyWeightException, InvalidUnitForWeightException,
             InvalidNumberForWeightException, IncorrectWaddCommandException, InvalidIndexException,
             MultiArgumentDetectedException, InvalidCaloriesException {
+
+    public static Command parseCommand(String userInput) throws InvalidSyntaxException, InvalidArgumentException {
+
         Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
 
         if (!matcher.matches()) {
@@ -134,4 +138,3 @@ public class Parser {
         return enteredDate;
     }
 }
-

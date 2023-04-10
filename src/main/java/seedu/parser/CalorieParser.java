@@ -124,7 +124,6 @@ public class CalorieParser {
     }
 
     //@@author calebcjl
-
     /**
      * Parses arguments for DeleteCalorieCommand.
      *

@@ -9,6 +9,10 @@ import seedu.ui.Ui;
 
 import java.util.Date;
 
+//@@author calebcjl
+/**
+ * Represents command to delete calorie consumption entry.
+ */
 public class DeleteCalorieCommand extends Command {
     public static final int NO_INDEX = -1;
     private Date date;

@@ -40,7 +40,11 @@ public class ParserTest {
         Parser testList = new Parser();
         Command result;
         try {
+
             result = Parser.processCommand(userInput);
+
+            result = testList.parseCommand(userInput);
+
         } catch (InvalidSyntaxException e) {
             result = new ExitCommand();
         } catch (InvalidArgumentException | MultiSlashErrorException | InvalidDateFormatException |

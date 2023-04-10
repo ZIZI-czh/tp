@@ -61,9 +61,13 @@ public class WorkoutParser {
      * @throws InvalidSyntaxException If there is invalid syntax.
      */
     static Command parseAddExerciseCommand(String arguments)
+
             throws InvalidArgumentException, IncorrectWaddCommandException,
             InvalidWeightException, InvalidNumberForRepsException {
         //exercise name 100kg 5 5 5 5
+
+            throws InvalidSyntaxException, InvalidArgumentException {
+
         String[] exerciseDetails = new String[ADD_ARGUMENT_COUNT];
         Matcher matcher = Pattern.compile("\\d+").matcher(arguments);
         matcher.find();
@@ -190,6 +194,7 @@ public class WorkoutParser {
         return new StartWorkoutCommand(date, workoutName);
     }
 
+    //@@author calebcjl
     /**
      * Parses workout name for StartWorkoutCommand
      *

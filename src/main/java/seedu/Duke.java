@@ -26,6 +26,7 @@ public class Duke {
         new Duke().run();
     }
 
+    //@@author calebcjl
     /**
      * Runs the program.
      */
@@ -39,7 +40,6 @@ public class Duke {
     }
 
     //@@author calebcjl
-
     /**
      * Continuously receives and execute commands entered by user.
      * Stops when user enters exit command.
@@ -49,7 +49,7 @@ public class Duke {
         do {
             String userInput = Ui.getUserInput();
             try {
-                command = Parser.processCommand(userInput);
+                command = Parser.parseCommand(userInput);
                 command.setData(workoutList, calorieTracker, foodDictionary);
                 Ui.showCommandResult(command);
             } catch(Exception e) {
