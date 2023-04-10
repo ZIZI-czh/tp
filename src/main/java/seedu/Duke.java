@@ -4,15 +4,12 @@ import seedu.calorietracker.CalorieTracker;
 import seedu.calorietracker.FoodDictionary;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
-import seedu.exceptions.InvalidArgumentException;
-import seedu.exceptions.InvalidSyntaxException;
 import seedu.parser.Parser;
 import seedu.storage.Storage;
 import seedu.ui.Ui;
 import seedu.workout.WorkoutList;
 
 //@@author calebcjl
-
 /**
  * Main entry to the program
  */
@@ -55,8 +52,10 @@ public class Duke {
                 command = Parser.processCommand(userInput);
                 command.setData(workoutList, calorieTracker, foodDictionary);
                 Ui.showCommandResult(command);
-            } catch (InvalidSyntaxException | InvalidArgumentException e) {
-                Ui.showErrorMessage(e.toString());
+            } catch(Exception e) {
+                // remove package name
+                String errorMessage = e.getMessage().replaceAll(".*\\.(.*)Exception: ", "");
+                Ui.printErrorMessage(errorMessage);
                 command = new Command();
             }
             storage.saveUserData(workoutList, foodDictionary, calorieTracker);
